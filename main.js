@@ -11,6 +11,7 @@ async function main(addedEL = false) {
       });
     }
     playNotif();
+    solveCaptcha();
     return;
   } else if (convoStarted()) {
     await conversation();
