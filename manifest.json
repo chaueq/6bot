@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "6bot",
+  "version": "1.8.8",
+
+  "description": "Automated convo starters and filtering for 6obcy.pl",
+
+  "permissions": [
+    "storage"
+  ],
+
+  "content_scripts": [{
+    "matches": ["https://6obcy.org/rozmowa"],
+    "js": [
+      "lib/data.js",
+      "lib/adBlocker.js",
+      "lib/settings.js",
+      "lib/ad.js",
+      "lib/interface.js",
+      "lib/workarounds.js",
+      "lib/notif.js",
+      "lib/convo.js",
+      "lib/msgAnalysis.js",
+      "lib/answers.js",
+      "lib/verification.js",
+      "lib/antispam.js",
+      "lib/captchaInputWatcher.js",
+      "lib/obcyInfoBox.js",
+      "lib/nameRecognition.js",
+
+      "events/captchaAppeared.js",
+      "events/captchaError.js",
+      "events/convoStarted.js",
+      "events/convoEnded.js",
+      "events/timeout.js",
+      "events/messageDuplicate.js",
+
+      "conversation.js",
+      "main.js"
+    ]
+  }],
+
+  "options_ui": {
+    "page": "settings/settings.html",
+    "open_in_tab": true
+  },
+
+  "web_accessible_resources": [{
+    "resources": ["media/notif.mp3"],
+    "matches": ["https://6obcy.org/*"],
+    "use_dynamic_url": true
+  }]
+}

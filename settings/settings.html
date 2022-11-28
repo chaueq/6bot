@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>6bot - Ustawienia</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="section">
+    <div class="sectionHeader btn">Informacje o Tobie</div>
+      
+    <div class="sectionContent">
+      <div class="setting">
+        <div class="settingHeader">Płeć</div>
+        <div class="settingContent">
+          <span>K</span><input id="u_sex" class="switch" type="range" min="0" max="1" step="1"><span>M</span>
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Wiek</div>
+        <div class="settingContent">
+          <input id="u_age" min="3" max="100" type="number">
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Zboczony/a</div>
+        <div class="settingContent">
+          <span>NIE</span><input id="u_zb" class="switch" type="range" min="0" max="1" step="1"><span>TAK</span>
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Imię</div>
+        <div class="settingContent">
+          <input id="u_name" class="message" type="text">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="sectionHeader btn">Kryteria wyszukiwania</div>
+
+    <div class="sectionContent">
+      <div class="setting">
+        <div class="settingHeader">Płeć</div>
+        <div class="settingContent">
+          <span>K</span><input id="o_sex" class="switch" type="range" min="0" max="1" step="0.5"><span>M</span>
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Wiek minimalny</div>
+        <div class="settingContent">
+          <input id="o_age_min" min="0" max="100" type="number">
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Wiek maksymalny</div>
+        <div class="settingContent">
+          <input id="o_age_max" min="0" max="100" type="number">
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Zboczony/a</div>
+        <div class="settingContent">
+          <span>NIE</span><input id="o_zb" class="switch" type="range" min="0" max="1" step="0.5"><span>TAK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="sectionHeader btn">Rozmowa</div>
+    <div class="sectionContent">
+      <div class="settingHeader" style="cursor: help;" title="Możesz użyć poniższych zmiennych w wiadomościach:&#10;$p - Płeć (k/m)&#10;$w - Wiek&#10;$z - Zboczony/a (tak/nie)&#10;$* - pełna informacja (np. 'm 18 zb', lub 'k 24')&#10;$$ - znak $">ℹ️</div>
+      <div class="setting">
+        <div class="settingHeader">Powitanie</div>
+        <div class="settingContent">
+          <input id="c_greeting" class="message" type="text">
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Wiadomość po weryfikacji</div>
+        <div class="settingContent">
+          <input id="c_final" class="message" type="text">
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Zakończ rozmowę nawet po udanej weryfikacji</div>
+        <div class="settingContent">
+          <span>NIE</span><input id="c_disconnect" class="switch" type="range" min="0" max="1" step="1"><span>TAK</span>
+        </div>
+      </div>
+      <div class="setting">
+        <div class="settingHeader">Opóźnienie mięzdy znakami [ms]</div>
+        <div class="settingContent">
+          <input id="c_delay" min="0" max="200" step="10" type="number">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../lib/data.js"></script>
+  <script src="../lib/settings.js"></script>
+
+  <script src="settings.js"></script>
+</body>
+
+</html>
