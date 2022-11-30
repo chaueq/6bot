@@ -9,9 +9,11 @@ async function main(addedEL = false) {
       document.querySelectorAll('div.sd-interface>button')[1].addEventListener('click', (e) => {
         setTimeout(main, 1000, true, true);
       });
+      solveCaptcha();
     }
-    playNotif();
-    solveCaptcha();
+    else {
+      playNotif();
+    }
     return;
   } else if (convoStarted()) {
     await conversation();
