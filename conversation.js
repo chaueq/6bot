@@ -74,7 +74,7 @@ async function conversation() {
         analyzeMessage(convo[i].value, obcy);
 
         if(obcy.sex === undefined)
-          recognizeName(convo[i].rawValue, obcy);
+          recognizeName(convo[i].value, obcy);
       }
       updateOIB(obcy);
 
