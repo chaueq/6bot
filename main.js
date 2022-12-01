@@ -3,7 +3,11 @@ async function main(addedEL = false) {
 
   if (captchaAppeared()) {
     if(captchaError() || !addedEL) {
-      captchaInputWatcher();
+      (async () => {
+        while(!(await captchaInputWatcher(true)))
+        console.log('trying')
+          await sleep(100);
+      })();
     }
     if (!addedEL) {
       document.querySelectorAll('div.sd-interface>button')[1].addEventListener('click', (e) => {
