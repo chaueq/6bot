@@ -15,6 +15,10 @@ async function main(addedEL = false) {
       });
       solveCaptcha();
     }
+    else if(captchaError()) {
+      // captchaInputWatcher(true);
+      changeCaptcha();
+    }
     else {
       playNotif();
     }
