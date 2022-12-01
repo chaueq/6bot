@@ -1,22 +1,23 @@
 async function main(addedEL = false) {
-  let delay = 200;
+  const delay = 200;
 
   if (captchaAppeared()) {
     if(captchaError() || !addedEL) {
       (async () => {
         while(!(await captchaInputWatcher(true)))
-        console.log('trying')
           await sleep(100);
       })();
     }
     if (!addedEL) {
       document.querySelectorAll('div.sd-interface>button')[1].addEventListener('click', (e) => {
-        setTimeout(main, 1000, true, true);
+        setTimeout(main, 1000, true);
       });
+      const limit = (await getSettings()).captcha.tries_limit;
+      captcha_cntr = limit == 0 ? Infinity : limit;
       solveCaptcha();
     }
-    else if(captchaError()) {
-      // captchaInputWatcher(true);
+    else if(captchaError() && captcha_cntr > 1) {
+      --captcha_cntr;
       changeCaptcha();
     }
     else {
@@ -32,6 +33,7 @@ async function main(addedEL = false) {
   setTimeout(main, delay, false);
 }
 
+let captcha_cntr;
 let start = document.createElement('span');
 start.innerText = '🤖';
 start.style = 'text-align: center; position: absolute; left: 25px; bottom:25px; font-size: 50px; cursor: pointer; filter: invert(); z-index: 1000;';

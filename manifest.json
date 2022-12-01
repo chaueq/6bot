@@ -36,6 +36,7 @@
       "events/timeout.js",
       "events/messageDuplicate.js",
 
+
       "conversation.js",
       "main.js"
     ]
