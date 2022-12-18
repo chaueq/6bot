@@ -36,6 +36,7 @@ getSettings().then((settings) => {
     document.getElementById('c_final').value = settings.convo.final_msg;
     document.getElementById('c_disconnect').value = settings.convo.disconnect ? 1 : 0;
     document.getElementById('c_delay').value = settings.convo.typing_delay;
+    document.getElementById('c_reactionTime').value = settings.convo.reaction_time;
 
     document.getElementById('captcha_tries').value = settings.captcha.tries_limit;
 });
