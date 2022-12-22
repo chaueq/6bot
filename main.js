@@ -20,6 +20,9 @@ async function main(addedEL = false) {
       --captcha_cntr;
       changeCaptcha();
     }
+    else if(captcha_cntr > 0) {
+      solveCaptcha();
+    }
     else {
       playNotif();
     }
