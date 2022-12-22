@@ -2,6 +2,9 @@ async function main(addedEL = false) {
   const delay = 200;
 
   if (captchaAppeared()) {
+    if(!(await adVerify())) {
+      return;
+    }
     if(captchaError() || !addedEL) {
       (async () => {
         while(!(await captchaInputWatcher(true)))
