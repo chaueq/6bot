@@ -9,6 +9,12 @@ async function conversation() {
       age: false,
       zb: false
     },
+    told: {
+      sex: false,
+      age: false,
+      zb: false,
+      name: false
+    },
     status: {
       passed: true,
       spam: false
@@ -26,7 +32,7 @@ async function conversation() {
 
   //Greeting
   if (prefs.convo.greeting.length > 0) {
-    await sendMessage(prefs.convo.greeting, prefs);
+    await sendMessage(prefs.convo.greeting, prefs, obcy);
   }
 
   const minConvoTime = sleep(5000);
@@ -70,7 +76,7 @@ async function conversation() {
           break;
         }
 
-        await answerQuestions(convo[i].value, prefs);
+        await answerQuestions(convo[i].value, prefs, obcy);
         analyzeMessage(convo[i].value, obcy);
 
         if(obcy.sex === undefined)
@@ -86,15 +92,15 @@ async function conversation() {
       // ask question
       if (obcy.sex === undefined && obcy.asked.sex === false) {
         let m = drawRandom(['km?', 'mk?', 'km', 'mk']);
-        await sendMessage(m, prefs);
+        await sendMessage(m, prefs, obcy);
         obcy.asked.sex = true;
       } else if (obcy.age === undefined && obcy.asked.age === false) {
         let m = drawRandom(['ile lat?', 'ile masz lat?', 'ile lat', 'wiek', 'lat?', 'lat'])
-        await sendMessage(m, prefs);
+        await sendMessage(m, prefs, obcy);
         obcy.asked.age = true;
       } else if (obcy.zb === undefined && prefs.user.zb == 1 && obcy.asked.zb === false) {
         let m = drawRandom(['zb?', 'z6?']);
-        await sendMessage(m, prefs);
+        await sendMessage(m, prefs, obcy);
         obcy.asked.zb = true;
       } else if ((obcy.sex !== undefined && (obcy.age !== undefined || obcy.zb !== undefined)) || !autoFix.firstTry) {
         break;
@@ -136,14 +142,14 @@ async function conversation() {
 
     await Promise.all([
       minConvoTime,
-      msg.length == 0 ? sleep(100) : sendMessage(msg, prefs)
+      msg.length == 0 ? sleep(100) : sendMessage(msg, prefs, obcy)
     ]);
     await endConvo();
     return;
   }
 
   if (prefs.convo.final_msg.length > 0) {
-    await sendMessage(prefs.convo.final_msg, prefs);
+    await sendMessage(prefs.convo.final_msg, prefs, obcy);
   }
 
   await minConvoTime;
