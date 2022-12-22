@@ -24,6 +24,7 @@ async function main(addedEL = false) {
       changeCaptcha();
     }
     else if(captcha_cntr > 0) {
+      --captcha_cntr;
       solveCaptcha();
     }
     else {
