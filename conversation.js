@@ -28,6 +28,7 @@ async function conversation() {
     idleCounter: def_autoFix_idleCounter
   }
   const prefs = await getSettings();
+  const convo_timeout = sleep(prefs.convo.timeout * 1000);
   updateOIB(obcy);
 
   //Greeting
@@ -48,7 +49,7 @@ async function conversation() {
   //gather info
   let lastInbox = 0;
   let lastConvoLen = 0;
-  while (!convoEnded()) {
+  while (!convoEnded() && (await promiseState(convo_timeout)) === 'pending') {
     const convo = getConvo();
     const inbox = getInboxLength();
     const autoFix_reanalyze = (autoFix.idleCounter == 0 && !autoFix.reanalyzed);
@@ -72,7 +73,7 @@ async function conversation() {
 
         if (isSPAM(convo[i].value)) {
           obcy.status.spam = true;
-          console.log(convo[i].value + 'was recognized as SPAM');
+          console.log(convo[i].value + ' was recognized as SPAM');
           break;
         }
 
@@ -91,7 +92,7 @@ async function conversation() {
 
       // ask question
       if (obcy.sex === undefined && obcy.asked.sex === false) {
-        let m = drawRandom(['km?', 'mk?', 'km', 'mk']);
+        let m = drawRandom(['km?', 'km']);
         await sendMessage(m, prefs, obcy);
         obcy.asked.sex = true;
       } else if (obcy.age === undefined && obcy.asked.age === false) {
@@ -99,7 +100,7 @@ async function conversation() {
         await sendMessage(m, prefs, obcy);
         obcy.asked.age = true;
       } else if (obcy.zb === undefined && prefs.user.zb == 1 && obcy.asked.zb === false) {
-        let m = drawRandom(['zb?', 'z6?']);
+        let m = drawRandom(['zb?', 'z6?', ('zboczon' + (obcy.sex !== undefined ? (obcy.sex ? 'y' : 'a') : 'y/a' + '?'))]);
         await sendMessage(m, prefs, obcy);
         obcy.asked.zb = true;
       } else if ((obcy.sex !== undefined && (obcy.age !== undefined || obcy.zb !== undefined)) || !autoFix.firstTry) {
