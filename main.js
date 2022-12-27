@@ -32,6 +32,7 @@ async function main(addedEL = false) {
     }
     return;
   } else if (convoStarted()) {
+    resetCaptchaHistory();
     await conversation();
   } else if (convoEnded()) {
     await hitNextButton();
