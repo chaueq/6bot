@@ -5,12 +5,6 @@ async function main(addedEL = false) {
     if(!(await adVerify())) {
       return;
     }
-    if(captchaError() || !addedEL) {
-      (async () => {
-        while(!(await captchaInputWatcher(true)))
-          await sleep(100);
-      })();
-    }
     if (!addedEL) {
       document.querySelectorAll('div.sd-interface>button')[1].addEventListener('click', (e) => {
         setTimeout(main, 1000, true);
@@ -50,6 +44,7 @@ start.addEventListener('click', (e) => {
   e.target.parentNode.removeChild(e.target);
   tipsyRemove();
   createObcyInfoBox();
+  captchaInputWatcher();
   main();
 });
 
