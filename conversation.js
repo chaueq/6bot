@@ -13,7 +13,8 @@ async function conversation() {
       sex: false,
       age: false,
       zb: false,
-      name: false
+      name: false,
+      bot: false
     },
     status: {
       passed: true,
