@@ -6,7 +6,7 @@ async function main(addedEL = false) {
       return;
     }
     if (!addedEL) {
-      document.querySelectorAll('div.sd-interface>button')[1].addEventListener('click', (e) => {
+      document.querySelectorAll('div#simple-dialogs>div#sd-current>div.sd-unit>div.sd-interface.unselectable>button')[1].addEventListener('click', (e) => {
         setTimeout(main, 1000, true);
       });
       const limit = (await getSettings()).captcha.tries_limit;
@@ -46,7 +46,10 @@ start.addEventListener('click', (e) => {
   createObcyInfoBox();
   captchaInputWatcher();
   main();
+  setInterval(timeCounter, 60000);
 });
 
+metricsOnOpen();
+uxOnOpen();
 removeAds();
 adMain();

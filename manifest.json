@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "6bot",
-  "version": "2.4.1",
+  "version": "2.4.2",
 
   "description": "Automated convo starters and filtering for 6obcy.pl",
 
@@ -28,6 +28,8 @@
       "lib/obcyInfoBox.js",
       "lib/nameRecognition.js",
       "lib/captcha.js",
+      "lib/metrics.js",
+      "lib/ux.js",
 
       "events/captchaAppeared.js",
       "events/captchaError.js",
