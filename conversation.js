@@ -134,12 +134,14 @@ async function conversation() {
 
   if (!obcy.status.passed) {
     let msg = '';
-    if (obcy.status.reason === 'too young')
-      msg += 'za mało'
-    else if (obcy.status.reason === 'too old')
-      msg += 'za dużo'
-    else if (obcy.status.reason === 'sex')
-      msg += 'nie interesuje mnie ta płeć'
+    if(prefs.convo.feedback) {
+      if (obcy.status.reason === 'too young')
+        msg += 'za mało'
+      else if (obcy.status.reason === 'too old')
+        msg += 'za dużo'
+      else if (obcy.status.reason === 'sex')
+        msg += 'nie interesuje mnie ta płeć'
+    }
 
     await Promise.all([
       minConvoTime,
