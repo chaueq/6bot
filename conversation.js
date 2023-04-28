@@ -95,17 +95,21 @@ async function conversation() {
         let m = drawRandom(['km?', 'km']);
         await sendMessage(m, prefs, obcy);
         obcy.asked.sex = true;
-      } else if (obcy.age === undefined && obcy.asked.age === false) {
+      }
+      else if (obcy.age === undefined && obcy.asked.age === false) {
         let m = drawRandom(['ile lat?', 'ile masz lat?', 'ile lat', 'wiek', 'lat?', 'lat'])
         await sendMessage(m, prefs, obcy);
         obcy.asked.age = true;
-      } else if (obcy.zb === undefined && prefs.user.zb == 1 && obcy.asked.zb === false) {
+      }
+      else if (obcy.zb === undefined && prefs.user.zb == 1 && obcy.asked.zb === false) {
         let m = drawRandom(['zb?', 'z6?', ('zboczon' + (obcy.sex !== undefined ? (obcy.sex ? 'y' : 'a') : 'y/a' + '?'))]);
         await sendMessage(m, prefs, obcy);
         obcy.asked.zb = true;
-      } else if ((obcy.sex !== undefined && (obcy.age !== undefined || obcy.zb !== undefined)) || !autoFix.firstTry) {
+      }
+      else if ((obcy.sex !== undefined && (obcy.age !== undefined || obcy.zb !== undefined)) || !autoFix.firstTry) {
         break;
-      } else {
+      }
+      else {
         autoFix.firstTry = false;
         obcy.asked.zb = false;
         obcy.asked.age = false;
