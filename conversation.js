@@ -3,7 +3,6 @@ async function conversation() {
     sex: undefined, //1 = male, 0 = female
     age: undefined,
     zb: undefined,
-    silentCounter: 0,
     asked: {
       sex: false,
       age: false,
@@ -101,12 +100,12 @@ async function conversation() {
         await sendMessage(m, prefs, obcy);
         obcy.asked.age = true;
       }
-      else if (obcy.zb === undefined && prefs.user.zb == 1 && obcy.asked.zb === false) {
+      else if (obcy.zb === undefined && (prefs.user.zb == 1 || prefs.search.zb == 1) && obcy.asked.zb === false) {
         let m = drawRandom(['zb?', 'z6?', ('zboczon' + (obcy.sex !== undefined ? (obcy.sex ? 'y' : 'a') : 'y/a' + '?'))]);
         await sendMessage(m, prefs, obcy);
         obcy.asked.zb = true;
       }
-      else if ((obcy.sex !== undefined && (obcy.age !== undefined || obcy.zb !== undefined)) || !autoFix.firstTry) {
+      else if ((obcy.sex !== undefined && obcy.age !== undefined && (obcy.zb !== undefined || prefs.search.zb == 0.5 || prefs.search.zb == 0)) || !autoFix.firstTry) {
         break;
       }
       else {
@@ -145,6 +144,14 @@ async function conversation() {
         msg += 'za dużo'
       else if (obcy.status.reason === 'sex')
         msg += 'nie interesuje mnie ta płeć'
+      else if (obcy.status.reason === 'sexual activities') {
+        if(prefs.search.zb == 1) {
+          msg += 'nie zb mnie nie interesuje'
+        }
+        else {
+          msg += 'nie rozmawiam ze zb'
+        }
+      }
     }
 
     await Promise.all([

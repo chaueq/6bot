@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "6bot",
-  "version": "2.4.6",
+  "version": "2.4.7",
 
   "description": "Automated convo starters and filtering for 6obcy.pl",
 
@@ -35,7 +35,6 @@
       "events/captchaError.js",
       "events/convoStarted.js",
       "events/convoEnded.js",
-      "events/timeout.js",
       "events/messageDuplicate.js",
 
 
