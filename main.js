@@ -25,10 +25,12 @@ async function main(addedEL = false) {
       playNotif();
     }
     return;
-  } else if (convoStarted()) {
+  }
+  else if (convoStarted()) {
     resetCaptchaHistory();
     await conversation();
-  } else if (convoEnded()) {
+  }
+  else if (convoEnded()) {
     await hitNextButton();
   }
 
