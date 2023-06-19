@@ -113,6 +113,7 @@ async function conversation() {
         obcy.asked.zb = false;
         obcy.asked.age = false;
         obcy.asked.sex = false;
+        await waitForAnswer(5, inbox);
         continue;
       }
 
