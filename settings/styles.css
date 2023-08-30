@@ -113,3 +113,8 @@ textarea {
     background-color: var(--active-section-bg);
     color: var(--active-section-border);
 }
+
+p.footer,p.footer>a{
+    color:#DCB000;
+    font-size: 2ch;
+}
