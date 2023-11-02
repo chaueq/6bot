@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "6bot",
-  "version": "2.4.12",
+  "version": "2.5.0",
 
   "description": "Automated convo starters and filtering for 6obcy.pl",
 
   "permissions": [
-    "storage"
+    "storage",
+    "unlimitedStorage"
   ],
 
   "content_scripts": [{
@@ -30,6 +31,7 @@
       "lib/captcha.js",
       "lib/metrics.js",
       "lib/ux.js",
+      "lib/history.js",
 
       "events/captchaAppeared.js",
       "events/captchaError.js",
@@ -42,6 +44,14 @@
       "main.js"
     ]
   }],
+
+  "background": {
+    "service_worker": "background/main.js"
+  },
+
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
 
   "options_ui": {
     "page": "settings/settings.html",

@@ -41,4 +41,8 @@ getSettings().then((settings) => {
     document.getElementById('c_timeout').value = settings.convo.timeout;
 
     document.getElementById('captcha_tries').value = settings.captcha.tries_limit;
+
+    document.getElementById('history_min_length').value = settings.history.min_length;
+    document.getElementById('history_max_amount').value = settings.history.max_amount;
+    document.getElementById('history_max_duration').value = settings.history.max_duration;
 });
