@@ -12,8 +12,8 @@ async function addToHistory(convo) {
     indexes.temporary = await filterByAmount(indexes.temporary, prefs.max_amount);
     
     await Promise.all([
-        setData('history_index', indexes, false),
-        setData('conversation_' + convo.timestamp, convo, false)
+        setData('history_index', indexes),
+        setData('conversation_' + convo.timestamp, convo)
     ]);
 }
 
@@ -37,15 +37,15 @@ async function removeFromHistory(convo_stamp) {
         }
     }
     await Promise.all([
-        setData('history_index', indexes, false),
-        delData('conversation_' + convo_stamp, false)
+        setData('history_index', indexes),
+        delData('conversation_' + convo_stamp)
     ]);
 }
 
 async function filterByAmount(index, treshold) {
     if(index.length > treshold) {
         for (const c of index.splice(0, index.length - treshold)) {
-            await delData('conversation_' + c.timestamp, false);
+            await delData('conversation_' + c.timestamp);
         }
     }
     return index
@@ -66,12 +66,12 @@ async function filterHistory() {
 
     const deletions = [];
     for (const c of indexes.temporary.splice(0, i)) {
-        deletions.push(delData('conversation_' + c.timestamp, false));
+        deletions.push(delData('conversation_' + c.timestamp));
     }
     
     await Promise.all([
         Promise.all(deletions),
-        setData('history_index', indexes, false)
+        setData('history_index', indexes)
     ]);
 }
 
@@ -84,7 +84,7 @@ async function transferToPermanent(convo_stamp, name) {
             indexes.temporary.splice(i, 1);
         }
     }
-    setData('history_index', indexes, false); 
+    setData('history_index', indexes); 
 }
 
 async function renameConversationInHistory(convo_stamp, name) {
@@ -94,5 +94,5 @@ async function renameConversationInHistory(convo_stamp, name) {
             indexes.permanent[i].name = name;
         }
     }
-    setData('history_index', indexes, false); 
+    setData('history_index', indexes); 
 }

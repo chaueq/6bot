@@ -6,7 +6,7 @@ function formatTimestamp(stamp) {
     return d.toLocaleTimeString('pl-PL');
 }
 
-getData('conversation_'+stamp, false).then((convo) => {
+getData('conversation_'+stamp).then((convo) => {
     for(const msg of convo.messages) {
         const box = document.createElement('div');
         box.classList.add('msg', msg.received ? 'obcy' : 'ty');

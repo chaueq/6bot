@@ -1,15 +1,15 @@
 async function lockBg() {
     await bgUnlocked();
-    await setData('bg_lock', true, false);
+    await setData('bg_lock', true);
 }
 
 function unlockBg() {
-    return setData('bg_lock', false, false);
+    return setData('bg_lock', false);
 }
 
 async function isBgLocked() {
     try {
-        return await getData('bg_lock', false);
+        return await getData('bg_lock');
     } catch(e) {
         return false;
     }
