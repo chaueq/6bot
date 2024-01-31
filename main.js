@@ -42,7 +42,7 @@ async function main(addedEL = false) {
 let captcha_cntr;
 let start = document.createElement('span');
 start.innerText = '🤖';
-start.style = 'text-align: center; position: absolute; left: 25px; bottom:25px; font-size: 50px; cursor: pointer; filter: invert(); z-index: 1000;';
+start.style = 'text-align: center; position: absolute; left: 25px; bottom:calc(1em + 25px); font-size: 50px; cursor: pointer; filter: invert(); z-index: 1000;';
 start = document.body.appendChild(start);
 start.addEventListener('click', (e) => {
   e.target.parentNode.removeChild(e.target);
