@@ -44,13 +44,20 @@ let start = document.createElement('span');
 start.innerText = '🤖';
 start.style = 'text-align: center; position: absolute; left: 25px; bottom:calc(1em + 25px); font-size: 50px; cursor: pointer; filter: invert(); z-index: 1000;';
 start = document.body.appendChild(start);
-start.addEventListener('click', (e) => {
-  e.target.parentNode.removeChild(e.target);
-  tipsyRemove();
-  createObcyInfoBox();
-  captchaInputWatcher();
-  main();
-  setInterval(timeCounter, 60000);
+start.addEventListener('click', async (e) => {
+  const settings_correct = await verifySettings();
+
+  if(settings_correct) {
+    e.target.parentNode.removeChild(e.target);
+    tipsyRemove();
+    createObcyInfoBox();
+    captchaInputWatcher();
+    main();
+    setInterval(timeCounter, 60000);
+  }
+  else {
+    window.alert('Twoje ustawienia 6bot są nieprawidłowe!\nPopraw je aby używać 6bota.')
+  }
 });
 
 metricsOnOpen();
