@@ -94,16 +94,16 @@ async function conversation() {
 
       // ask question
       if (obcy.sex === undefined && obcy.asked.sex === false) {
-        let m = drawRandom(['km?', 'km']);
+        let m = drawRandom(['km', 'k czy m']) + drawRandom(['?', '']);
         await sendMessage(m, prefs, obcy);
         obcy.asked.sex = true;
       }
       else if (obcy.age === undefined && obcy.asked.age === false) {
-        let m = drawRandom(['ile lat?', 'ile masz lat?', 'ile lat', 'wiek', 'lat?', 'lat'])
+        let m = drawRandom(['ile lat', 'ile masz lat', 'wiek', 'lat', 'jaki wiek']) + drawRandom(['?', '']);
         await sendMessage(m, prefs, obcy);
         obcy.asked.age = true;
       }
-      else if (obcy.zb === undefined && (prefs.user.zb == 1 || prefs.search.zb == 1) && obcy.asked.zb === false) {
+      else if (obcy.zb === undefined && (prefs.user.zb == 1 || prefs.search.zb == 1) && prefs.search.zb != 0.5 && obcy.asked.zb === false) {
         let m = drawRandom(['zb?', 'z6?', ('zboczon' + (obcy.sex !== undefined ? (obcy.sex ? 'y' : 'a') : 'y/a' + '?'))]);
         await sendMessage(m, prefs, obcy);
         obcy.asked.zb = true;
