@@ -1,4 +1,8 @@
 async function conversation() {
+  if(!await verifySettings()) {
+    return;
+  }
+
   const obcy = {
     sex: undefined, //1 = male, 0 = female
     age: undefined,
