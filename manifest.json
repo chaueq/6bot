@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "6bot",
-  "version": "2.7.6",
+  "version": "3.0.0",
 
   "description": "Automated convo starters and filtering for 6obcy.pl",
 
@@ -11,8 +11,9 @@
   ],
 
   "content_scripts": [{
-    "matches": ["https://6obcy.org/rozmowa"],
+    "matches": ["https://6obcy.org/rozmowa", "https://6obcy.org/?mobileOldStyle"],
     "js": [
+      "lib/mobile.js",
       "lib/data.js",
       "lib/adBlocker.js",
       "lib/settings.js",

@@ -40,20 +40,35 @@ async function main(addedEL = false) {
 }
 
 let captcha_cntr;
-let start = document.createElement('span');
-start.innerText = '🤖';
-start.style = 'text-align: center; position: absolute; left: 25px; bottom:calc(1em + 25px); font-size: 50px; cursor: pointer; filter: invert(); z-index: 1000;';
-start = document.body.appendChild(start);
-start.addEventListener('click', async (e) => {
-  if(await verifySettings()) {
-    e.target.parentNode.removeChild(e.target);
-    tipsyRemove();
-    createObcyInfoBox();
-    captchaInputWatcher();
-    main();
-    setInterval(timeCounter, 60000);
-  }
-});
+
+if(isMobile()) {
+  const start = document.getElementById('intro-start');
+  start.addEventListener('click', async (e) => {
+    if(await verifySettings()) {
+      tipsyRemove();
+      createObcyInfoBox();
+      captchaInputWatcher();
+      main();
+      setInterval(timeCounter, 60000);
+    }
+  });
+}
+else {
+  let start = document.createElement('span');
+  start.innerText = '🤖';
+  start.style = 'text-align: center; position: absolute; left: 25px; bottom:calc(1em + 25px); font-size: 50px; cursor: pointer; filter: invert(); z-index: 1000;';
+  start = document.body.appendChild(start);
+  start.addEventListener('click', async (e) => {
+    if(await verifySettings()) {
+      e.target.parentNode.removeChild(e.target);
+      tipsyRemove();
+      createObcyInfoBox();
+      captchaInputWatcher();
+      main();
+      setInterval(timeCounter, 60000);
+    }
+  });
+}
 
 metricsOnOpen();
 uxOnOpen();
