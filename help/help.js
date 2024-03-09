@@ -59,6 +59,7 @@ window.addEventListener('load', async () => {
         const ticket = {
             timestamp: Date.now(),
             version: chrome.runtime.getManifest().version,
+            userAgent: window.navigator.userAgent,
             description: '',
             settings: null,
             history: {
