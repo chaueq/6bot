@@ -98,7 +98,7 @@ async function conversation() {
 
       // ask question
       if (obcy.sex === undefined && obcy.asked.sex === false) {
-        let m = drawRandom(['km', 'k czy m']) + drawRandom(['?', '']);
+        let m = drawRandom(['km']) + drawRandom(['?', '']);
         await sendMessage(m, prefs, obcy);
         obcy.asked.sex = true;
       }
