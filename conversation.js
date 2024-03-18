@@ -32,7 +32,9 @@ async function conversation() {
   }
   const prefs = await getSettings();
   //pick a name for this conversation
-  prefs.user.name = drawRandom(seperateAlternatives(prefs.user.name));
+  if(prefs.user.name.length > 0) {
+    prefs.user.name = drawRandom(seperateAlternatives(prefs.user.name));
+  }
 
   const convo_timeout = sleep(prefs.convo.timeout * 1000);
   updateOIB(obcy);
