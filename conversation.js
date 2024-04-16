@@ -79,7 +79,7 @@ async function conversation() {
           continue;
         }
 
-        if (isSPAM(convo[i].value)) {
+        if (isSPAM(convo[i].value, prefs.antispam.threshold)) {
           obcy.status.spam = true;
           console.log(convo[i].value + ' was recognized as SPAM');
           break;

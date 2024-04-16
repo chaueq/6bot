@@ -45,4 +45,11 @@ getSettings().then((settings) => {
     document.getElementById('history_min_length').value = settings.history.min_length;
     document.getElementById('history_max_amount').value = settings.history.max_amount;
     document.getElementById('history_max_duration').value = settings.history.max_duration;
+
+    document.getElementById('as_threshold').value = settings.antispam.threshold;
+    document.getElementById('as_threshold').title = settings.antispam.threshold;
 });
+
+document.getElementById('as_threshold').addEventListener('change', (e) => {
+    e.target.title = e.target.value;
+})
