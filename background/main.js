@@ -4,8 +4,11 @@ importScripts(
     '/lib/history.js',
     '/lib/workarounds.js',
     './history.js',
-    './lock.js'
+    './lock.js',
+    './updates.js'
 );
+
+as_updater();
 
 unlockBg().then(lockBg).then(filterHistory).then(unlockBg);
 const historyWatcher = setInterval(

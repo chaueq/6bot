@@ -65,23 +65,27 @@ window.addEventListener('load', async () => {
             history: {
                 index: null,
                 content: {}
+            },
+            antispam: {
+                data: null,
+                stamp: null
             }
         };
         const optionals = document.querySelectorAll('input[type="checkbox"]');
         
-        setProgress(20);
+        setProgress(17);
 
         //insert description
         ticket.description = document.querySelector('textarea.description').value;
         
-        setProgress(40);
+        setProgress(33);
 
         //insert settings
         if(optionals[0].checked) {
             ticket.settings = await getSettings();
         }
 
-        setProgress(60);
+        setProgress(50);
 
         //insert history
         if(optionals[1].checked) {
@@ -91,16 +95,25 @@ window.addEventListener('load', async () => {
             for(const p of ticket.history.index.permanent) {
                 ticket.history.content[p.timestamp] = await getData('conversation_'+p.timestamp);
                 saved += 1;
-                setProgress(60 + (20 * (saved/total)));
+                setProgress(50 + (17 * (saved/total)));
             }
             for(const t of ticket.history.index.temporary) {
                 ticket.history.content[t.timestamp] = await getData('conversation_'+t.timestamp);
                 saved += 1;
-                setProgress(60 + (20 * (saved/total)));
+                setProgress(50 + (17 * (saved/total)));
             }
         }
 
-        setProgress(80);
+        setProgress(67);
+
+        //insert antispam
+        try {
+            ticket.antispam.data = await getASData();
+            ticket.antispam.stamp = await getData('as_stamp');
+        }
+        catch (e) {}
+
+        setProgress(83);
 
         //encrypt & prepare download
         const json = JSON.stringify(ticket);

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "6bot",
-  "version": "3.1.1.0419",
+  "version": "3.2.0",
 
   "description": "Automated convo starters and filtering for 6obcy.pl",
 
@@ -60,7 +60,7 @@
   },
 
   "web_accessible_resources": [{
-    "resources": ["media/notif.mp3"],
+    "resources": ["media/notif.mp3", "data/antispam.json"],
     "matches": ["https://6obcy.org/*"],
     "use_dynamic_url": true
   }]

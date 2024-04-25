@@ -3,6 +3,8 @@ async function conversation() {
     return;
   }
 
+  const as_db = await getASData();
+
   const obcy = {
     sex: undefined, //1 = male, 0 = female
     age: undefined,
@@ -79,7 +81,7 @@ async function conversation() {
           continue;
         }
 
-        if (isSPAM(convo[i].value, prefs.antispam.threshold)) {
+        if (isSPAM(convo[i].value, as_db, prefs.antispam.threshold)) {
           obcy.status.spam = true;
           console.log(convo[i].value + ' was recognized as SPAM');
           break;
