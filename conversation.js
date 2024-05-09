@@ -5,26 +5,7 @@ async function conversation() {
 
   const as_db = await getASData();
 
-  const obcy = {
-    sex: undefined, //1 = male, 0 = female
-    age: undefined,
-    zb: undefined,
-    asked: {
-      sex: false,
-      age: false,
-      zb: false
-    },
-    told: {
-      sex: false,
-      age: false,
-      zb: false,
-      name: false
-    },
-    status: {
-      passed: true,
-      spam: false
-    }
-  };
+  const obcy = getDefaultObcy();
 
   const def_autoFix_idleCounter = 10;
   const autoFix = {
