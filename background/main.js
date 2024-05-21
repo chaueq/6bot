@@ -19,7 +19,7 @@ const historyWatcher = setInterval(
     }, 
     3600000
 );
-const activityWatcher = setInterval(isBgLocked, 15000);
+// const activityWatcher = setInterval(isBgLocked, 15000);
 
 chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
     await lockBg();

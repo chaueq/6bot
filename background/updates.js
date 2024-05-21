@@ -19,5 +19,6 @@ async function as_updater() {
         return;
     }
 
-    setTimeout(as_updater, 900000); //15 minutes
+    // setTimeout(as_updater, 900000); //15 minutes
+    setTimeout(as_updater, 20000); //20 seconds
 }
