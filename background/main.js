@@ -3,12 +3,14 @@ importScripts(
     '/lib/settings.js',
     '/lib/history.js',
     '/lib/workarounds.js',
+    '/lib/model.js',
     './history.js',
     './lock.js',
     './updates.js'
 );
 
 as_updater();
+captcha_updater();
 
 unlockBg().then(lockBg).then(filterHistory).then(unlockBg);
 const historyWatcher = setInterval(

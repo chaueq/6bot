@@ -27,6 +27,7 @@ async function main(addedEL = false) {
     return;
   }
   else if (convoStarted()) {
+    await commitCaptchaFindings();
     resetCaptchaHistory();
     const recorder = recordConvo();
     await conversation();

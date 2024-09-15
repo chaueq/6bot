@@ -69,6 +69,10 @@ window.addEventListener('load', async () => {
             antispam: {
                 data: null,
                 stamp: null
+            },
+            captcha: {
+                data: null,
+                stamp: null
             }
         };
         const optionals = document.querySelectorAll('input[type="checkbox"]');
@@ -106,10 +110,15 @@ window.addEventListener('load', async () => {
 
         setProgress(67);
 
-        //insert antispam
+        //insert antispam and captcha
         try {
             ticket.antispam.data = await getASData();
             ticket.antispam.stamp = await getData('as_stamp');
+        }
+        catch (e) {}
+        try {
+            ticket.captcha.data = await getData('captcha_model');
+            ticket.captcha.stamp = await getData('captcha_stamp');
         }
         catch (e) {}
 

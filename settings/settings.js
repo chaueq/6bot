@@ -41,6 +41,9 @@ getSettings().then((settings) => {
     document.getElementById('c_timeout').value = settings.convo.timeout;
 
     document.getElementById('captcha_tries').value = settings.captcha.tries_limit;
+    document.getElementById('captcha_use_ml').value = settings.captcha.use_ml ? 1 : 0;;
+    document.getElementById('captcha_ml_model').value = settings.captcha.model ? 1 : 0;;
+    document.getElementById('captcha_feed_ml').value = settings.captcha.feed_ml ? 1 : 0;;
 
     document.getElementById('history_min_length').value = settings.history.min_length;
     document.getElementById('history_max_amount').value = settings.history.max_amount;

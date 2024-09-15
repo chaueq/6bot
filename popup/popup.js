@@ -6,7 +6,8 @@ const links = [
     'https://discord.gg/8F3RnX7bjm',
     'https://chrome.google.com/webstore/detail/6bot/nnckhobpojcmpdakklaondphkgceadnm',
     chrome.runtime.getURL('faq/faq.html'),
-    chrome.runtime.getURL('help/help.html')
+    chrome.runtime.getURL('help/help.html'),
+    chrome.runtime.getURL('captcha/solver.html')
 ];
 const buttons = document.getElementsByClassName('btn');
 
