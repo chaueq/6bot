@@ -16,7 +16,6 @@ async function as_updater() {
     catch(e) {
         await setData('as_stamp', 0);
         setTimeout(as_updater, 900000); //15 minutes
-        as_updater();
         return;
     }
 
@@ -48,7 +47,6 @@ async function captcha_updater() {
     catch(e) {
         await setData('captcha_stamp', 0);
         setTimeout(captcha_updater, 900000); //15 minutes
-        captcha_updater();
         return;
     }
 
