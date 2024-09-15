@@ -29,7 +29,7 @@ async function captcha_updater() {
         if (Date.now() >= (stamp + 3600000)) { //1 hour
             try {
                 const model = (await getSettings()).captcha.model ? 'ml' : 'darwin'
-                const response = await fetch("https://6bot.chaueq.com/api/" + darwin + "/model", {
+                const response = await fetch("https://6bot.chaueq.com/api/" + model + "/model", {
                     method: "GET",
                     headers: {
                         'Accept': '*',
