@@ -159,10 +159,8 @@ async function conversation() {
     await sendMessage(prefs.convo.final_msg, prefs, obcy);
   }
 
-  await minConvoTime;
-
-
   if (prefs.convo.disconnect == 1) {
+    await minConvoTime;
     await endConvo();
   }
 
