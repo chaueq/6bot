@@ -52,6 +52,7 @@ getSettings().then((settings) => {
 
     document.getElementById('as_threshold').value = settings.antispam.threshold;
     document.getElementById('as_threshold').title = settings.antispam.threshold;
+    document.getElementById('as_feed').value = settings.antispam.feed ? 1 : 0;
 });
 
 document.getElementById('as_threshold').addEventListener('change', (e) => {

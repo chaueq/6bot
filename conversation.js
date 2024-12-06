@@ -123,6 +123,17 @@ async function conversation() {
       }
     }
 
+    if(prefs.antispam.feed) {
+      let msgs = [];
+      const convo = getConvo();
+      for(const msg of convo) {
+        if(msg.received) {
+          msgs.push(msg.value);
+        }
+      }
+      send_messages(msgs);
+    }
+
     if(convoEnded()) {
       return;
     }

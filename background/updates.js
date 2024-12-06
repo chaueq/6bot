@@ -3,7 +3,7 @@ async function as_updater() {
         const stamp = await getData('as_stamp');
         if (Date.now() >= (stamp + 3600000)) { //1 hour
             try {
-                const response = await fetch("https://6bot.chaueq.com/api/antispam.json");
+                const response = await fetch("https://6bot-as.chaueq.com/api/static");
                 const data = await response.json();
                 await setData('as_data', data);
                 await setData('as_stamp', Date.now());
