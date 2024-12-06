@@ -89,7 +89,7 @@ async function conversation() {
           obcy.asked.sex = true;
         }
         else if (obcy.age === undefined && obcy.asked.age === false) {
-          let m = drawRandom(['ile lat', 'ile masz lat', 'wiek', 'lat', 'jaki wiek']) + drawRandom(['?', '']);
+          let m = drawRandom(['ile lat', 'wiek', 'lat']) + drawRandom(['?', '']);
           await sendMessage(m, prefs, obcy);
           obcy.asked.age = true;
         }
