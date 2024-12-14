@@ -56,8 +56,7 @@ if(isMobile()) {
 }
 else {
   let start = document.createElement('span');
-  start.innerText = '🤖';
-  start.style = 'text-align: center; position: absolute; left: 25px; bottom:calc(1em + 25px); font-size: 50px; cursor: pointer; filter: invert(); z-index: 1000;';
+  start.style = 'text-align: center; position: absolute; left: 25px; top: calc(100vh - 125px); height: 100px; width: 100px; cursor: pointer; z-index: 1000; background-image: url("' + chrome.runtime.getURL('media/logo.png') + '"); background-repeat: no-repeat; background-position: center; background-size: contain;';
   start = document.body.appendChild(start);
   start.addEventListener('click', async (e) => {
     if(await verifySettings()) {
