@@ -53,6 +53,9 @@ getSettings().then((settings) => {
     document.getElementById('as_threshold').value = settings.antispam.threshold;
     document.getElementById('as_threshold').title = settings.antispam.threshold;
     document.getElementById('as_feed').value = settings.antispam.feed ? 1 : 0;
+
+    document.getElementById('q_name').value = settings.questions.name;
+    document.getElementById('q_age').value = settings.questions.age;
 });
 
 document.getElementById('as_threshold').addEventListener('change', (e) => {

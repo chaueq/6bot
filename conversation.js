@@ -84,12 +84,12 @@ async function conversation() {
 
         // ask question
         if (obcy.sex === undefined && obcy.asked.sex === false) {
-          let m = drawRandom(['km']) + drawRandom(['?', '']);
+          let m = drawRandom(seperateAlternatives(prefs.questions.name));
           await sendMessage(m, prefs, obcy);
           obcy.asked.sex = true;
         }
         else if (obcy.age === undefined && obcy.asked.age === false) {
-          let m = drawRandom(['ile lat', 'wiek', 'lat']) + drawRandom(['?', '']);
+          let m = drawRandom(seperateAlternatives(prefs.questions.age));
           await sendMessage(m, prefs, obcy);
           obcy.asked.age = true;
         }
