@@ -24,7 +24,7 @@ async function conversation() {
 
   //Greeting
   if (prefs.convo.greeting.length > 0) {
-    await sendMessage(prefs.convo.greeting, prefs, obcy);
+    await sendMessage(prefs.convo.greeting, prefs, obcy, as_db);
   }
 
   const minConvoTime = sleep(5000);
@@ -69,7 +69,7 @@ async function conversation() {
             break;
           }
 
-          await answerQuestions(convo[i].value, prefs, obcy);
+          await answerQuestions(convo[i].value, prefs, obcy, as_db);
           analyzeMessage(convo[i].value, obcy);
 
           if(obcy.sex === undefined)
@@ -85,17 +85,17 @@ async function conversation() {
         // ask question
         if (obcy.sex === undefined && obcy.asked.sex === false) {
           let m = drawRandom(seperateAlternatives(prefs.questions.name));
-          await sendMessage(m, prefs, obcy);
+          await sendMessage(m, prefs, obcy, as_db);
           obcy.asked.sex = true;
         }
         else if (obcy.age === undefined && obcy.asked.age === false) {
           let m = drawRandom(seperateAlternatives(prefs.questions.age));
-          await sendMessage(m, prefs, obcy);
+          await sendMessage(m, prefs, obcy, as_db);
           obcy.asked.age = true;
         }
         else if (obcy.zb === undefined && (prefs.user.zb == 1 || prefs.search.zb == 1) && prefs.search.zb != 0.5 && obcy.asked.zb === false) {
           let m = drawRandom(['zb?', 'z6?', ('zboczon' + (obcy.sex !== undefined ? (obcy.sex ? 'y' : 'a') : 'y/a' + '?'))]);
-          await sendMessage(m, prefs, obcy);
+          await sendMessage(m, prefs, obcy, as_db);
           obcy.asked.zb = true;
         }
         else if ((obcy.sex !== undefined && obcy.age !== undefined && (obcy.zb !== undefined || prefs.search.zb == 0.5 || prefs.search.zb == 0)) || !autoFix.firstTry) {
@@ -161,14 +161,14 @@ async function conversation() {
 
       await Promise.all([
         minConvoTime,
-        msg.length == 0 ? sleep(100) : sendMessage(msg, prefs, obcy)
+        msg.length == 0 ? sleep(100) : sendMessage(msg, prefs, obcy, as_db)
       ]);
       await endConvo();
       return;
     }
 
     if (prefs.convo.final_msg.length > 0) {
-      await sendMessage(prefs.convo.final_msg, prefs, obcy);
+      await sendMessage(prefs.convo.final_msg, prefs, obcy, as_db);
     }
 
     if (prefs.convo.disconnect == 1) {
