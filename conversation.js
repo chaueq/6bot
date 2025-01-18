@@ -84,7 +84,7 @@ async function conversation() {
 
         // ask question
         if (obcy.sex === undefined && obcy.asked.sex === false) {
-          let m = drawRandom(seperateAlternatives(prefs.questions.name));
+          let m = drawRandom(seperateAlternatives(prefs.questions.sex));
           await sendMessage(m, prefs, obcy, as_db);
           obcy.asked.sex = true;
         }
